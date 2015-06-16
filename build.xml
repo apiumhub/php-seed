@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<project name="common-php" basedir="." default="test">
+    <php expression="include('vendor/autoload.php')"/>
+    <target name="test">
+        <phpunit haltonfailure="true" printsummary="true">
+            <batchtest>
+                <fileset dir="tests/">
+                    <include name="*.php"/>
+                </fileset>
+            </batchtest>
+        </phpunit>
+    </target>
+</project>
