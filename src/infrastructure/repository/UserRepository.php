@@ -35,6 +35,6 @@ class UserRepository extends base\RepositoryBase
     {
         $connection = $this->getEntityManager()->getConnection();
         $platform   = $connection->getDatabasePlatform();
-        $connection->executeUpdate($platform->getTruncateTableSQL('user', true /* whether to cascade */));
+        $connection->executeUpdate($platform->getTruncateTableSQL('users', true /* whether to cascade */));
     }
 }

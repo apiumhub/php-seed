@@ -11,7 +11,7 @@ namespace domain\model;
 
 /**
  * @Entity
- * @Table(name="user")
+ * @Table(name="users")
  */
 class User
 {
