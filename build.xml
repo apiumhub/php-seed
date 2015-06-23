@@ -6,7 +6,7 @@
         <phpunit haltonfailure="true" printsummary="true">
             <batchtest>
                 <fileset dir="tests/">
-                    <include name="*.php"/>
+                    <include name="**/*.php"/>
                 </fileset>
             </batchtest>
         </phpunit>
