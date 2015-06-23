@@ -1,0 +1,28 @@
+paths:
+    migrations: build/migrations
+environments:
+    default_migration_table: phinxlog
+    default_database: seed_db
+    seed_db:
+        adapter: sqlsrv
+        host: PBAWKSINF21
+        name: seed_db
+        user: christian
+        pass: teamcity
+        charset: utf8
+        collation: utf8_unicode_ci
+
+#USE [seed_db]
+#GO
+#/****** Objeto:  Table [dbo].[phinxlog]    Fecha de la secuencia de comandos: 06/23/2015 16:19:00 ******/
+#SET ANSI_NULLS ON
+#GO
+#SET QUOTED_IDENTIFIER ON
+#go
+#DROP TABLE [dbo].[phinxlog]
+#GO
+#CREATE TABLE [dbo].[phinxlog](
+#	[version] [BIGint] default 0,
+#	[start_time] [datetime] DEFAULT (getdate()),
+#	[end_time] [datetime] DEFAULT ('0000-00-00 00:00:00')
+#) ON [PRIMARY]
