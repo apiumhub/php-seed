@@ -11,9 +11,9 @@
   ],
   "require": {
     "phpunit/phpunit": "4.0",
-    "phing/phing": "2.8.2",
+    "phing/phing": "2.11.0",
     "slim/slim": "2.6.2",
-    "doctrine/orm": "2.8.2"
+    "doctrine/orm": "v2.5.0"
   },
   "require-dev": {
     "phing/phing": "2.*"
