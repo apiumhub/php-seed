@@ -12,6 +12,11 @@ environments:
         charset: utf8
         collation: utf8_unicode_ci
 
+#linux:
+#sudo apt-get install php5-mssql freetds-bin
+#tsql -S seed-db -U christian
+
+
 #USE [seed_db]
 #GO
 #/****** Objeto:  Table [dbo].[phinxlog]    Fecha de la secuencia de comandos: 06/23/2015 16:19:00 ******/
