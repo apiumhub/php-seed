@@ -22,6 +22,7 @@ class UserRepository extends base\RepositoryBase
         return "domain\\model\\User";
     }
 
+    //TODO: abstract generic DAO + extract configuration
     public function save(User $entity)
     {
         $this->getEntityManager()->persist($entity);

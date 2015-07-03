@@ -14,6 +14,7 @@ use infrastructure\repository\UserRepository;
 
 class UserRepositoryTest extends \PHPUnit_Framework_TestCase
 {
+    //TODO: use transaction rollback!!
     protected function setUp()
     {
         $sut = new UserRepository();
