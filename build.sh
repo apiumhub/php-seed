@@ -1,4 +1,4 @@
 #!/bin/bash -e
 . build/scripts/migrate_up.sh
-#comment
+comment
 . test.sh
