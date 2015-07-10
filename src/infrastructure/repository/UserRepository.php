@@ -31,6 +31,9 @@ class UserRepository extends base\RepositoryBase
     {
         return $this->getEntityManager()->find($this->entityQualifiedName(), $id);
     }
+
+
+
     public function truncateDb()
     {
         $connection = $this->getEntityManager()->getConnection();
