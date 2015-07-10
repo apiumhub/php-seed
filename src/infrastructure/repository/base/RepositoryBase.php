@@ -35,6 +35,7 @@ abstract class RepositoryBase
         $config = Setup::createAnnotationMetadataConfiguration($path, $devMode);
 
         // define credentials...
+        //temporary
         $connectionOptions = array(
             'driver'   => 'pdo_mysql',
             'host'     => 'localhost',
