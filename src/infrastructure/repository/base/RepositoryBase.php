@@ -36,11 +36,11 @@ abstract class RepositoryBase
 
         // define credentials...
         $connectionOptions = array(
-            'driver'   => 'pdo_mysql',
+            'driver'   => 'sqlsrv',
             'host'     => 'localhost',
             'dbname'   => 'seed_db',
-            'user'     => 'root',
-            'password' => 'root',
+            'user'     => 'christian',
+            'password' => 'teamcity',
         );
 
         return EntityManager::create($connectionOptions, $config);

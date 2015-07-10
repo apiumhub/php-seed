@@ -13,6 +13,8 @@ class UserResource
         $app->get('/hello/:name', function ($name) {
             echo "Hello, $name";
         });
+
+        //TODO: implement access to real service
     }
 
 }
