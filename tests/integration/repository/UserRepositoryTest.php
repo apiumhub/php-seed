@@ -11,20 +11,20 @@ namespace tests\integration\repository;
 
 use domain\model\User;
 use infrastructure\repository\UserRepository;
-
-abstract class RepositoryTestBase extends \PHPUnit_Framework_TestCase
+trait RepositoryTestBase
 {
-    const TESTING_ENVIRONMENT = "testing";
+    private $TESTING_ENVIRONMENT = "testing";
 
     protected function setUp()
     {
         $this->runMigrations();
         $sut = $this->createSut();
-        $sut->setEnvironment(self::TESTING_ENVIRONMENT);
+        $sut->setEnvironment($this->TESTING_ENVIRONMENT);
         $sut->startTransaction();
         //$sut->truncateDb();
-        $this->sut=$sut;
+        $this->sut = $sut;
     }
+
     protected function tearDown()
     {
         $this->sut->rollbackTransaction();
@@ -34,7 +34,7 @@ abstract class RepositoryTestBase extends \PHPUnit_Framework_TestCase
     {
         ini_set('include_path', get_include_path() . PATH_SEPARATOR . '/home/christian/workspace/php-dexeus-seed/');
         $app = require __DIR__ . '/../../../vendor/robmorgan/phinx/app/phinx.php';
-        $_SERVER['argv'] = ["php", "migrate", "-e", self::TESTING_ENVIRONMENT];
+        $_SERVER['argv'] = ["php", "migrate", "-e", $this->TESTING_ENVIRONMENT];
         $app->setAutoExit(false);
         $app->run();
     }
@@ -45,8 +45,10 @@ abstract class RepositoryTestBase extends \PHPUnit_Framework_TestCase
     protected abstract function createSut();
 }
 
-class UserRepositoryTest extends RepositoryTestBase
+class UserRepositoryTest extends \PHPUnit_Framework_TestCase
 {
+
+    use RepositoryTestBase;
 
     public function test_saveAndRetrieve_nonPersistentObject_shouldSave()
     {
