@@ -15,7 +15,6 @@ use tests\integration\repository\base\RepositoryTestBase;
 
 class UserRepositoryTest extends \PHPUnit_Framework_TestCase
 {
-
     use RepositoryTestBase;
 
     public function test_saveAndRetrieve_nonPersistentObject_shouldSave()
