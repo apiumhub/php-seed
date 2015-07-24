@@ -11,39 +11,7 @@ namespace tests\integration\repository;
 
 use domain\model\User;
 use infrastructure\repository\UserRepository;
-trait RepositoryTestBase
-{
-    private $TESTING_ENVIRONMENT = "testing";
-
-    protected function setUp()
-    {
-        $this->runMigrations();
-        $sut = $this->createSut();
-        $sut->setEnvironment($this->TESTING_ENVIRONMENT);
-        $sut->startTransaction();
-        //$sut->truncateDb();
-        $this->sut = $sut;
-    }
-
-    protected function tearDown()
-    {
-        $this->sut->rollbackTransaction();
-    }
-
-    protected function runMigrations()
-    {
-        ini_set('include_path', get_include_path() . PATH_SEPARATOR . '/home/christian/workspace/php-dexeus-seed/');
-        $app = require __DIR__ . '/../../../vendor/robmorgan/phinx/app/phinx.php';
-        $_SERVER['argv'] = ["php", "migrate", "-e", $this->TESTING_ENVIRONMENT];
-        $app->setAutoExit(false);
-        $app->run();
-    }
-
-    /**
-     * @return RepositoryBase
-     */
-    protected abstract function createSut();
-}
+use tests\integration\repository\base\RepositoryTestBase;
 
 class UserRepositoryTest extends \PHPUnit_Framework_TestCase
 {
