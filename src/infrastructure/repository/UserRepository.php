@@ -38,4 +38,12 @@ class UserRepository extends base\RepositoryBase
         $platform   = $connection->getDatabasePlatform();
         $connection->executeUpdate($platform->getTruncateTableSQL('users', true /* whether to cascade */));
     }
+    public function startTransaction()
+    {
+        return $this->getEntityManager()->beginTransaction();
+    }
+    public function rollbackTransaction()
+    {
+        return $this->getEntityManager()->rollback();
+    }
 }

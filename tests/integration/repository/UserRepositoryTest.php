@@ -18,8 +18,13 @@ class UserRepositoryTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $sut = new UserRepository();
-        $sut->truncateDb();
+        $sut->startTransaction();
+        //$sut->truncateDb();
         $this->sut=$sut;
+    }
+    protected function tearDown()
+    {
+        $this->sut->rollbackTransaction();
     }
 
     public function test_saveAndRetrieve_nonPersistentObject_shouldSave()
