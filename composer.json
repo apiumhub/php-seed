@@ -13,7 +13,8 @@
     "phpunit/phpunit": "4.0",
     "slim/slim": "2.6.2",
     "doctrine/orm": "v2.5.0",
-    "robmorgan/phinx": "^0.4.4"
+    "robmorgan/phinx": "^0.4.4",
+    "symfony/yaml": "^2.7"
   },
   "require-dev": {
     "phing/phing": "2.11.0"

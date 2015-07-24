@@ -17,6 +17,11 @@ class UserRepositoryTest extends \PHPUnit_Framework_TestCase
     //TODO: use transaction rollback!!
     protected function setUp()
     {
+        ini_set('include_path', get_include_path() . PATH_SEPARATOR . '/home/christian/workspace/php-dexeus-seed/');
+        $app=require __DIR__ . '/../../../vendor/robmorgan/phinx/app/phinx.php';
+        $_SERVER['argv']=["php", "migrate", "-e", "testing"];
+        $app->setAutoExit(false);
+        $app->run();
         $sut = new UserRepository();
         $sut->startTransaction();
         //$sut->truncateDb();
