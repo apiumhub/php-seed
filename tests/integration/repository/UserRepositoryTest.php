@@ -12,17 +12,15 @@ namespace tests\integration\repository;
 use domain\model\User;
 use infrastructure\repository\UserRepository;
 
-class UserRepositoryTest extends \PHPUnit_Framework_TestCase
+abstract class RepositoryTestBase extends \PHPUnit_Framework_TestCase
 {
-    //TODO: use transaction rollback!!
+    const TESTING_ENVIRONMENT = "testing";
+
     protected function setUp()
     {
-        ini_set('include_path', get_include_path() . PATH_SEPARATOR . '/home/christian/workspace/php-dexeus-seed/');
-        $app=require __DIR__ . '/../../../vendor/robmorgan/phinx/app/phinx.php';
-        $_SERVER['argv']=["php", "migrate", "-e", "testing"];
-        $app->setAutoExit(false);
-        $app->run();
-        $sut = new UserRepository();
+        $this->runMigrations();
+        $sut = $this->createSut();
+        $sut->setEnvironment(self::TESTING_ENVIRONMENT);
         $sut->startTransaction();
         //$sut->truncateDb();
         $this->sut=$sut;
@@ -32,6 +30,24 @@ class UserRepositoryTest extends \PHPUnit_Framework_TestCase
         $this->sut->rollbackTransaction();
     }
 
+    protected function runMigrations()
+    {
+        ini_set('include_path', get_include_path() . PATH_SEPARATOR . '/home/christian/workspace/php-dexeus-seed/');
+        $app = require __DIR__ . '/../../../vendor/robmorgan/phinx/app/phinx.php';
+        $_SERVER['argv'] = ["php", "migrate", "-e", self::TESTING_ENVIRONMENT];
+        $app->setAutoExit(false);
+        $app->run();
+    }
+
+    /**
+     * @return RepositoryBase
+     */
+    protected abstract function createSut();
+}
+
+class UserRepositoryTest extends RepositoryTestBase
+{
+
     public function test_saveAndRetrieve_nonPersistentObject_shouldSave()
     {
         $entity = new User("some name", 8);
@@ -39,5 +55,14 @@ class UserRepositoryTest extends \PHPUnit_Framework_TestCase
         $id=$entity->getId();
         $retrieved=$this->sut->find($id);
         $this->assertEquals(json_encode($entity), json_encode($retrieved));
+    }
+
+    /**
+     * @return RepositoryBase
+     */
+    protected function createSut()
+    {
+        $sut = new UserRepository();
+        return $sut;
     }
 }

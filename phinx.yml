@@ -3,7 +3,7 @@ paths:
 environments:
     default_migration_table: phinxlog
     default_database: seed_db
-    seed_db:
+    local:
         adapter: mysql
         host: localhost
         name: seed_db

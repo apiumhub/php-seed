@@ -12,6 +12,23 @@ abstract class RepositoryBase
      * @var \Doctrine\ORM\EntityManager
      */
     private $entityManager = null;
+    private $environment = "local";
+
+    /**
+     * @return string
+     */
+    public function getEnvironment()
+    {
+        return $this->environment;
+    }
+
+    /**
+     * @param string $environment
+     */
+    public function setEnvironment($environment)
+    {
+        $this->environment = $environment;
+    }
 
     /**
      * @return \Doctrine\ORM\EntityManager
@@ -36,7 +53,7 @@ abstract class RepositoryBase
         $config = Setup::createAnnotationMetadataConfiguration($path, $devMode);
 
         $migrationOptions=Yaml::parse(file_get_contents(dirname(__FILE__)."/../../../../phinx.yml"));
-        $connectionOptions=$migrationOptions['environments']['testing'];
+        $connectionOptions=$migrationOptions['environments'][$this->environment];
         $connectionOptions['driver']='pdo_'.$connectionOptions['adapter'];
         $connectionOptions['password']=$connectionOptions['pass'];
         $connectionOptions['dbname']=$connectionOptions['name'];
