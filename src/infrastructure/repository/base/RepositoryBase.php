@@ -2,6 +2,7 @@
 
 namespace infrastructure\repository\base;
 
+use Doctrine\DBAL\Logging\SQLLogger;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
 use Symfony\Component\Yaml\Yaml;
@@ -58,6 +59,16 @@ abstract class RepositoryBase
         $connectionOptions['password']=$connectionOptions['pass'];
         $connectionOptions['dbname']=$connectionOptions['name'];
         return EntityManager::create($connectionOptions, $config);
+    }
+
+    public function clearCache()
+    {
+        $this->getEntityManager()->clear();
+    }
+
+    public function setProfiler(SQLLogger $profiler)
+    {
+        $this->getEntityManager()->getConnection()->getConfiguration()->setSQLLogger($profiler);
     }
 
     /**

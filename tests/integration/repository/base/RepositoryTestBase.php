@@ -7,6 +7,9 @@
  */
 namespace tests\integration\repository\base;
 
+use tests\integration\repository\helpers\SqlQueryProfiler
+    ;
+
 trait RepositoryTestBase
 {
     private $TESTING_ENVIRONMENT = "testing";
@@ -16,6 +19,7 @@ trait RepositoryTestBase
         $this->runMigrations();
         $sut = $this->createSut();
         $sut->setEnvironment($this->TESTING_ENVIRONMENT);
+        $sut->setProfiler(new SqlQueryProfiler());
         $sut->startTransaction();
         //$sut->truncateDb();
         $this->sut = $sut;

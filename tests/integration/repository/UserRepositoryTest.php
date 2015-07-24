@@ -22,6 +22,7 @@ class UserRepositoryTest extends \PHPUnit_Framework_TestCase
         $entity = new User("some name", 8);
         $this->sut->save($entity);
         $id=$entity->getId();
+        $this->sut->clearCache();  //first level cache confirmed with Profiler
         $retrieved=$this->sut->find($id);
         $this->assertEquals(json_encode($entity), json_encode($retrieved));
     }
