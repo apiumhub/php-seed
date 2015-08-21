@@ -8,7 +8,7 @@ class UserTable extends AbstractMigration
     {
         $table=$this->table("users");
         $table
-            ->addColumn("userId", "integer")
+            ->addColumn("userId", "string")
             ->addColumn("name", "text")
             ->addColumn("age", "integer")
             ->save();

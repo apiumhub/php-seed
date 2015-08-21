@@ -45,6 +45,12 @@ class User
     protected $age;
 
     /**
+     * @var string
+     * @Column(type="string", length=255)
+     */
+    protected $userId;
+
+    /**
      * User constructor.
      * @param int $id
      * @param string $name
@@ -52,6 +58,7 @@ class User
      */
     public function __construct($name, $age)
     {
+        $this->userId=uniqid();
         $this->name = $name;
         $this->age = $age;
     }

@@ -4,21 +4,18 @@ environments:
     default_migration_table: phinxlog
     default_database: seed_db
     local:
-        adapter: mysql
-        host: localhost
+        adapter: sqlsrv
+        host: PBAWKSINF21
         name: seed_db
-        user: root
-        pass: 'root'
-        port: 3306
-        charset: utf8
-        collation: utf8_unicode_ci
+        user: christian
+        pass: teamcity2
+        port: 1433
     testing:
-        adapter: mysql
-        host: localhost
-        name: seed_db_test
-        user: root
-        pass: 'root'
-        port: 3306
-        charset: utf8
+        adapter: sqlsrv
+        host: PBAWKSINF21
+        name: seed_db
+        user: christian
+        pass: teamcity2
+        port: 1433
         collation: utf8_unicode_ci
 
