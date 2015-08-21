@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-php vendor/bin/phinx migrate
+php vendor/bin/phinx migrate -e local
