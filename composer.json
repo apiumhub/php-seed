@@ -14,14 +14,25 @@
     "slim/slim": "2.6.2",
     "doctrine/orm": "v2.5.0",
     "robmorgan/phinx": "^0.4.4",
-    "symfony/yaml": "^2.7"
+    "symfony/yaml": "^2.7",
+    "christian/first-composer-package": "dev-master"
   },
   "require-dev": {
     "phing/phing": "2.11.0"
   },
   "autoload": {
     "psr-4": {
-      "": ["src/", "test/", "./"]
+      "": [
+        "src/",
+        "test/",
+        "./"
+      ]
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "http://bindex01/git/first-composer-package.git"
+    }
+  ]
 }
