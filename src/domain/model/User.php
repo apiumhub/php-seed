@@ -52,7 +52,6 @@ class User
 
     /**
      * User constructor.
-     * @param int $id
      * @param string $name
      * @param string $age
      */

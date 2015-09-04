@@ -15,7 +15,8 @@
     "doctrine/orm": "v2.5.0",
     "robmorgan/phinx": "^0.4.4",
     "symfony/yaml": "^2.7",
-    "christian/first-composer-package": "dev-master"
+    "christian/first-composer-package": "dev-master",
+    "phpmd/phpmd": "^2.2"
   },
   "require-dev": {
     "phing/phing": "2.11.0"

@@ -28,9 +28,9 @@ class UserRepository extends base\RepositoryBase
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
     }
-    public function find($id)
+    public function find($entityId)
     {
-        return $this->getEntityManager()->find($this->entityQualifiedName(), $id);
+        return $this->getEntityManager()->find($this->entityQualifiedName(), $entityId);
     }
     public function truncateDb()
     {
@@ -40,10 +40,10 @@ class UserRepository extends base\RepositoryBase
     }
     public function startTransaction()
     {
-        return $this->getEntityManager()->beginTransaction();
+        $this->getEntityManager()->beginTransaction();
     }
     public function rollbackTransaction()
     {
-        return $this->getEntityManager()->rollback();
+        $this->getEntityManager()->rollback();
     }
 }
