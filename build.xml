@@ -16,13 +16,23 @@
                 standard="Zend"
                 >
             <fileset dir="src">
-                <include name="**/*.php" />
+                <include name="**/*.php"/>
             </fileset>
             <fileset dir="tests">
-                <include name="**/*.php" />
+                <include name="**/*.php"/>
             </fileset>
             <formatter type="summary" usefile="false"/>
             <formatter type="full" outfile="build/reports/phpcs-report.txt"/>
         </phpcodesniffer>
+        <phpmd>
+            <fileset dir="src">
+                <include name="**/*.php"/>
+            </fileset>
+            <fileset dir="tests">
+                <include name="**/*.php"/>
+            </fileset>
+            <formatter type="text" usefile="false"/>
+            <formatter type="xml" outfile="build/reports/pmd.xml"/>
+        </phpmd>
     </target>
 </project>
