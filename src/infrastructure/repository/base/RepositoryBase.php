@@ -53,11 +53,14 @@ abstract class RepositoryBase
 
         $config = Setup::createAnnotationMetadataConfiguration($path, $devMode);
 
-        $migrationOptions=Yaml::parse(file_get_contents(dirname(__FILE__)."/../../../../phinx.yml"));
-        $connectionOptions=$migrationOptions['environments'][$this->environment];
-        $connectionOptions['driver']='pdo_'.$connectionOptions['adapter'];
-        $connectionOptions['password']=$connectionOptions['pass'];
-        $connectionOptions['dbname']=$connectionOptions['name'];
+        $migrationOptions = Yaml::parse(
+            file_get_contents(dirname(__FILE__) . "/../../../../phinx.yml")
+        );
+        $connectionOptions
+            = $migrationOptions['environments'][$this->environment];
+        $connectionOptions['driver'] = 'pdo_' . $connectionOptions['adapter'];
+        $connectionOptions['password'] = $connectionOptions['pass'];
+        $connectionOptions['dbname'] = $connectionOptions['name'];
         return EntityManager::create($connectionOptions, $config);
     }
 
@@ -68,7 +71,8 @@ abstract class RepositoryBase
 
     public function setProfiler(SQLLogger $profiler)
     {
-        $this->getEntityManager()->getConnection()->getConfiguration()->setSQLLogger($profiler);
+        $this->getEntityManager()->getConnection()->getConfiguration()
+            ->setSQLLogger($profiler);
     }
 
     /**

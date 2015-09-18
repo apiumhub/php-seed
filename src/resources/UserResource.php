@@ -10,9 +10,11 @@ class UserResource
 {
     public static function add($app)
     {
-        $app->get('/hello/:name', function ($name) {
-            echo "Hello, $name";
-        });
+        $app->get(
+            '/hello/:name', function ($name) {
+                echo "Hello, $name";
+            }
+        );
 
         //TODO: implement access to real service
     }

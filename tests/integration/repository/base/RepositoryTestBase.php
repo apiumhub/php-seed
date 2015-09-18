@@ -7,18 +7,17 @@
  */
 namespace tests\integration\repository\base;
 
-use tests\integration\repository\helpers\SqlQueryProfiler
-    ;
+use tests\integration\repository\helpers\SqlQueryProfiler;
 
 trait RepositoryTestBase
 {
-    private $TESTING_ENVIRONMENT = "testing";
+    private $testingEnvironment = "testing";
 
     protected function setUp()
     {
         $this->runMigrations();
         $sut = $this->createSut();
-        $sut->setEnvironment($this->TESTING_ENVIRONMENT);
+        $sut->setEnvironment($this->testingEnvironment);
         $sut->setProfiler(new SqlQueryProfiler());
         $sut->startTransaction();
         //$sut->truncateDb();
@@ -32,9 +31,13 @@ trait RepositoryTestBase
 
     protected function runMigrations()
     {
-        ini_set('include_path', get_include_path() . PATH_SEPARATOR . '/home/christian/workspace/php-dexeus-seed/');
-        $app = require __DIR__ . '/../../../../vendor/robmorgan/phinx/app/phinx.php';
-        $_SERVER['argv'] = ["php", "migrate", "-e", $this->TESTING_ENVIRONMENT];
+        ini_set(
+            'include_path', get_include_path() . PATH_SEPARATOR
+            . '/home/christian/workspace/php-dexeus-seed/'
+        );
+        $app = require __DIR__
+            . '/../../../../vendor/robmorgan/phinx/app/phinx.php';
+        $_SERVER['argv'] = ["php", "migrate", "-e", $this->testingEnvironment];
         $app->setAutoExit(false);
         $app->run();
     }

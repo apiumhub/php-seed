@@ -28,20 +28,30 @@ class UserRepository extends base\RepositoryBase
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
     }
+
     public function find($entityId)
     {
-        return $this->getEntityManager()->find($this->entityQualifiedName(), $entityId);
+        return $this->getEntityManager()->find(
+            $this->entityQualifiedName(), $entityId
+        );
     }
+
     public function truncateDb()
     {
         $connection = $this->getEntityManager()->getConnection();
-        $platform   = $connection->getDatabasePlatform();
-        $connection->executeUpdate($platform->getTruncateTableSQL('users', true /* whether to cascade */));
+        $platform = $connection->getDatabasePlatform();
+        $connection->executeUpdate(
+            $platform->getTruncateTableSQL(
+                'users', true /* whether to cascade */
+            )
+        );
     }
+
     public function startTransaction()
     {
         $this->getEntityManager()->beginTransaction();
     }
+
     public function rollbackTransaction()
     {
         $this->getEntityManager()->rollback();

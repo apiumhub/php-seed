@@ -11,4 +11,18 @@
             </batchtest>
         </phpunit>
     </target>
+    <target name="inspect">
+        <phpcodesniffer
+                standard="Zend"
+                >
+            <fileset dir="src">
+                <include name="**/*.php" />
+            </fileset>
+            <fileset dir="tests">
+                <include name="**/*.php" />
+            </fileset>
+            <formatter type="summary" usefile="false"/>
+            <formatter type="full" outfile="build/reports/phpcs-report.txt"/>
+        </phpcodesniffer>
+    </target>
 </project>
