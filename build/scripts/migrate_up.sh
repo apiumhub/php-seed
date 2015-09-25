@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-php vendor/bin/phinx migrate -e local
+config=${1:-local}
+php vendor/bin/phinx migrate -e $config
