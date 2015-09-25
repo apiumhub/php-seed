@@ -1,2 +1,2 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -e
 ./vendor/phing/phing/bin/phing test
