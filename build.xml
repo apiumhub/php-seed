@@ -9,6 +9,7 @@
                     <include name="**/*.php"/>
                 </fileset>
             </batchtest>
+            <formatter type="xml" outfile="build/reports/phpunit.xml"/>
         </phpunit>
     </target>
     <target name="inspect">
