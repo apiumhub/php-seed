@@ -36,5 +36,14 @@
             <formatter type="text" usefile="false"/>
             <formatter type="xml" outfile="build/reports/pmd.xml"/>
         </phpmd>
+        <phpcpd>
+            <fileset dir="src">
+                <include name="**/*.php"/>
+            </fileset>
+            <fileset dir="tests">
+                <include name="**/*.php"/>
+            </fileset>
+            <formatter type="pmd" outfile="build/reports/pmd-cpd.xml"/>
+        </phpcpd>
     </target>
 </project>
