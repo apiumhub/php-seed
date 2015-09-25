@@ -36,7 +36,8 @@ class UserRepository extends base\RepositoryBase
         );
     }
 
-    public function truncateDb()         {
+    public function truncateDb()
+    {
         $connection = $this->getEntityManager()->getConnection();
         $platform = $connection->getDatabasePlatform();
         $connection->executeUpdate(
