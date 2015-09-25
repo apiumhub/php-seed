@@ -23,7 +23,7 @@ environments:
         collation: utf8_unicode_ci
     testing:
         adapter: mysql
-        host: localhost
+        host: mysql.service
         name: seed_db_test
         user: root
         pass: 'root'
