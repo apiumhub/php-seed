@@ -14,6 +14,8 @@
     <target name="inspect">
         <phpcodesniffer
                 standard="Zend"
+                haltonerror="true"
+                haltonwarning="true"
                 >
             <fileset dir="src">
                 <include name="**/*.php"/>
@@ -22,7 +24,7 @@
                 <include name="**/*.php"/>
             </fileset>
             <formatter type="summary" usefile="false"/>
-            <formatter type="full" outfile="build/reports/phpcs-report.txt"/>
+            <formatter type="xml" outfile="build/reports/phpcs-report.xml"/>
         </phpcodesniffer>
         <phpmd>
             <fileset dir="src">
