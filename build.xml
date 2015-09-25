@@ -24,7 +24,7 @@
                 <include name="**/*.php"/>
             </fileset>
             <formatter type="summary" usefile="false"/>
-            <formatter type="xml" outfile="build/reports/phpcs-report.xml"/>
+            <formatter type="checkstyle" outfile="build/reports/phpcs-report.xml"/>
         </phpcodesniffer>
         <phpmd>
             <fileset dir="src">
