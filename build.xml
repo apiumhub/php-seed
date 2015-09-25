@@ -55,5 +55,17 @@
                 <include name="**/*.php"/>
             </fileset>
         </phploc>
+        <phpdepend>
+            <fileset dir="src">
+                <include name="**/*.php"/>
+            </fileset>
+            <fileset dir="tests">
+                <include name="**/*.php"/>
+            </fileset>
+            <logger type="jdepend-xml" outfile="build/reports/jdepend.xml"/>
+            <logger type="summary-xml" outfile="build/reports/jdepend-summary.xml"/>
+            <logger type="jdepend-chart" outfile="build/reports/dependencies.svg"/>
+            <logger type="overview-pyramid" outfile="build/reports/overview-pyramid.svg"/>
+        </phpdepend>
     </target>
 </project>
