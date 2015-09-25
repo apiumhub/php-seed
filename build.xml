@@ -3,7 +3,7 @@
 <project name="common-php" basedir="." default="test">
     <php expression="include('vendor/autoload.php')"/>
     <target name="test">
-        <phpunit haltonfailure="true" printsummary="true">
+        <phpunit haltonfailure="true" haltonerror="true" printsummary="true">
             <batchtest>
                 <fileset dir="tests/">
                     <include name="**/*.php"/>
