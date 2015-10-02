@@ -4,6 +4,9 @@
     <php expression="include('vendor/autoload.php')"/>
     <target name="test">
         <coverage-setup database="build/reports/coverage.db">
+            <fileset dir="src/">
+                <include name="**/*.php"/>
+            </fileset>
         </coverage-setup>
         <phpunit haltonfailure="true" haltonerror="true" printsummary="true" codecoverage="true">
             <batchtest>
@@ -13,6 +16,7 @@
             </batchtest>
             <formatter type="xml" outfile="build/reports/phpunit.xml"/>
             <formatter type="clover" outfile="build/reports/phpunit-clover.xml"/>
+            <formatter type="summary" outfile="build/reports/phpunit-clover.html"/>
         </phpunit>
     </target>
     <target name="inspect">
