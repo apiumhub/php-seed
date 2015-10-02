@@ -3,7 +3,9 @@
 <project name="common-php" basedir="." default="test">
     <php expression="include('vendor/autoload.php')"/>
     <target name="test">
-        <phpunit haltonfailure="true" haltonerror="true" printsummary="true">
+        <coverage-setup database="build/reports/coverage.db">
+        </coverage-setup>
+        <phpunit haltonfailure="true" haltonerror="true" printsummary="true" codecoverage="true">
             <batchtest>
                 <fileset dir="tests/">
                     <include name="**/*.php"/>
