@@ -12,6 +12,7 @@
                 </fileset>
             </batchtest>
             <formatter type="xml" outfile="build/reports/phpunit.xml"/>
+            <formatter type="clover" outfile="build/reports/phpunit-clover.xml"/>
         </phpunit>
     </target>
     <target name="inspect">
