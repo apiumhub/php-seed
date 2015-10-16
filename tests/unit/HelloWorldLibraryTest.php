@@ -15,7 +15,7 @@ class HelloWorldLibraryTest extends \PHPUnit_Framework_TestCase
 
     public function test_sayHello_called_saysHelloToTheWorld()
     {
-        $result=SayHello::world();
+        $result = SayHello::world();
         $this->assertThat($result, $this->equalTo("Hello World, Composer!"));
     }
 }

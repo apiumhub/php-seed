@@ -52,12 +52,13 @@ class User
 
     /**
      * User constructor.
+     *
      * @param string $name
      * @param string $age
      */
     public function __construct($name, $age)
     {
-        $this->userId=uniqid();
+        $this->userId = uniqid();
         $this->name = $name;
         $this->age = $age;
     }
