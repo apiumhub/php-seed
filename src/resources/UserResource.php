@@ -23,8 +23,10 @@ class UserResource
                 $data = json_decode($json, true);
                 $service = new UserApplicationService();
                 $userId=$service->createUser($data["name"], $data["age"]);
-                header("Content-Type: application/json");
-                $app->response()->body('{"userId": '+$userId+'}');
+                $app->response()['Content-Type'] = 'application/json';
+                $app->response()->body(
+                    '{"userId": "'.$userId.'"}'
+                );
             }
         );
     }
