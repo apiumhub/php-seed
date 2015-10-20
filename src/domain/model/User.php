@@ -81,4 +81,13 @@ class User
         return "$this->name - $this->age";
     }
 
+    public function toJSON()
+    {
+        $json = array();
+        foreach ($this as $key => $value) {
+            $json[$key] = $value;
+        }
+        return json_encode($json);
+    }
+
 }
