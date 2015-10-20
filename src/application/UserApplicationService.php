@@ -8,6 +8,7 @@
 
 namespace application;
 use domain\model\User;
+use infrastructure\repository\UserRepository;
 
 /**
  * Created by IntelliJ IDEA.
@@ -22,14 +23,18 @@ class UserApplicationService
     /**
      * UserApplicationService constructor.
      */
-    public function __construct($repository)
+    public function __construct($repository=NULL)
     {
+        if ($repository==NULL)
+            $repository=new UserRepository();
         $this->repository = $repository;
     }
 
     public function createUser($name, $age)
     {
-        $this->repository->save(User::create($name, $age));
+        $user = User::create($name, $age);
+        $this->repository->save($user);
+        return $user->getUserId();
     }
 
 }

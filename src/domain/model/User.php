@@ -43,6 +43,10 @@ class User
         return $this->id;
     }
 
+    public function getUserId()
+    {
+        return $this->userId;
+    }
     /**
      * @var string
      * @Column(type="string", length=64)

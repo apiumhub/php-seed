@@ -9,10 +9,18 @@ use application\UserApplicationService;
  */
 class UserApplicationServiceTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+    private $repository;
+
+    public function setUp()
+    {
+        $this->repository = $this->getMock("domain\\services\\IUserRepository");
+        $this->sut = new UserApplicationService($this->repository);
+    }
+
     public function test_createUser_called_callsSaveOnRepository()
     {
-        $repository = $this->getMock("domain\\services\\IUserRepository");
-        $repository
+        $this->repository
             ->expects($this->once())
             ->method("save")
             ->will(
@@ -24,7 +32,16 @@ class UserApplicationServiceTest extends \PHPUnit_Framework_TestCase
                     }
                 )
             );
-        $sut = new UserApplicationService($repository);
-        $sut->createUser("aName", 18);
+        $this->sut->createUser("aName", 18);
     }
+
+    public function test_createUser_userCreated_returnUserId()
+    {
+        $this->repository
+            ->expects($this->any())
+            ->method("save");
+        $actual=$this->sut->createUser("aName", 18);
+        $this->assertNotEmpty($actual);
+    }
+
 }

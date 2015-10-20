@@ -1,5 +1,7 @@
 <?php
 namespace resources;
+use application\UserApplicationService;
+
 /**
  * Created by IntelliJ IDEA.
  * User: christian
@@ -12,11 +14,18 @@ class UserResource
     {
         $app->get(
             '/hello/:name', function ($name) {
-                echo "Hello, $name";
+            echo "Hello, $name";
             }
         );
-
-        //TODO: implement access to real service
+        $app->put(
+            '/user', function () use ($app) {
+                $json = $app->request->getBody();
+                $data = json_decode($json, true);
+                $service = new UserApplicationService();
+                $userId=$service->createUser($data["name"], $data["age"]);
+                header("Content-Type: application/json");
+                $app->response()->body('{"userId": '+$userId+'}');
+            }
+        );
     }
-
 }
