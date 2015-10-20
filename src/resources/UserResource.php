@@ -17,7 +17,7 @@ class UserResource
             echo "Hello, $name";
             }
         );
-        $app->put(
+        $app->post(
             '/user', function () use ($app) {
                 $json = $app->request->getBody();
                 $data = json_decode($json, true);
