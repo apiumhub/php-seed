@@ -8,10 +8,11 @@
 
 namespace infrastructure\repository;
 
+use domain\services\IUserRepository;
 use infrastructure\repository\base;
 use domain\model\User;
 
-class UserRepository extends base\RepositoryBase
+class UserRepository extends base\RepositoryBase implements IUserRepository
 {
 
     /**

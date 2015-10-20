@@ -25,6 +25,17 @@ class User
     protected $id;
 
     /**
+     * @param $name
+     * @param $age
+     *
+     * @return User
+     */
+    public static function create($name, $age)
+    {
+        return new User($name, $age);
+    }
+
+    /**
      * @return int
      */
     public function getId()
@@ -61,6 +72,11 @@ class User
         $this->userId = uniqid();
         $this->name = $name;
         $this->age = $age;
+    }
+
+    public function toInspectionString()
+    {
+        return "$this->name - $this->age";
     }
 
 }
