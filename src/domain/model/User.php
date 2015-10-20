@@ -23,6 +23,34 @@ class User
      * @GeneratedValue(strategy="AUTO")
      */
     protected $id;
+    /**
+     * @var string
+     * @Column(type="string", length=64)
+     */
+    protected $name;
+    /**
+     * @var string
+     * @Column(type="string", length=255)
+     */
+    protected $age;
+    /**
+     * @var string
+     * @Column(type="string", length=255)
+     */
+    protected $userId;
+
+    /**
+     * User constructor.
+     *
+     * @param string $name
+     * @param string $age
+     */
+    public function __construct($name, $age)
+    {
+        $this->userId = uniqid();
+        $this->name = $name;
+        $this->age = $age;
+    }
 
     /**
      * @param $name
@@ -46,36 +74,6 @@ class User
     public function getUserId()
     {
         return $this->userId;
-    }
-    /**
-     * @var string
-     * @Column(type="string", length=64)
-     */
-    protected $name;
-
-    /**
-     * @var string
-     * @Column(type="string", length=255)
-     */
-    protected $age;
-
-    /**
-     * @var string
-     * @Column(type="string", length=255)
-     */
-    protected $userId;
-
-    /**
-     * User constructor.
-     *
-     * @param string $name
-     * @param string $age
-     */
-    public function __construct($name, $age)
-    {
-        $this->userId = uniqid();
-        $this->name = $name;
-        $this->age = $age;
     }
 
     public function toInspectionString()
