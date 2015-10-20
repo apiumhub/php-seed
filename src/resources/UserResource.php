@@ -21,8 +21,10 @@ class UserResource
             '/user', function () use ($app) {
                 $json = $app->request->getBody();
                 $data = json_decode($json, true);
+
                 $service = new UserApplicationService();
                 $userId=$service->createUser($data["name"], $data["age"]);
+
                 $app->response()['Content-Type'] = 'application/json';
                 $app->response()->body(
                     '{"userId": "'.$userId.'"}'
