@@ -1,5 +1,5 @@
 <?php
-namespace tests\integration\repository\helpers;
+namespace tests\integration\infrastructure\repository\helpers;
 
 use Doctrine\DBAL\Logging\SQLLogger;
 

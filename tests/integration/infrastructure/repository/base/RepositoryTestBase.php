@@ -5,9 +5,9 @@
  * Date: 24/07/15
  * Time: 15:46
  */
-namespace tests\integration\repository\base;
+namespace tests\integration\infrastructure\repository\base;
 
-use tests\integration\repository\helpers\SqlQueryProfiler;
+use tests\integration\infrastructure\repository\helpers\SqlQueryProfiler;
 
 trait RepositoryTestBase
 {
@@ -36,7 +36,7 @@ trait RepositoryTestBase
             . '/home/christian/workspace/php-dexeus-seed/'
         );
         $app = require __DIR__
-            . '/../../../../vendor/robmorgan/phinx/app/phinx.php';
+            . '/../../../../../vendor/robmorgan/phinx/app/phinx.php';
         $_SERVER['argv'] = ["php", "migrate", "-e", $this->testingEnvironment];
         $app->setAutoExit(false);
         $app->run();

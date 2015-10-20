@@ -6,12 +6,12 @@
  * Time: 16:54
  */
 
-namespace tests\integration\repository;
+namespace tests\integration\infrastructure\repository;
 
 
 use domain\model\User;
 use infrastructure\repository\UserRepository;
-use tests\integration\repository\base\RepositoryTestBase;
+use tests\integration\infrastructure\repository\base\RepositoryTestBase;
 
 class UserRepositoryTest extends \PHPUnit_Framework_TestCase
 {
