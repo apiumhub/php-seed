@@ -39,5 +39,8 @@
       "type": "vcs",
       "url": "http://bindex01/git/first-composer-package.git"
     }
-  ]
+  ],
+  "config":{
+    "secure-http": false
+  }
 }
