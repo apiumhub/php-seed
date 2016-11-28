@@ -1,5 +1,6 @@
 <?php
 namespace resources;
+
 use application\UserApplicationService;
 
 /**
@@ -10,26 +11,32 @@ use application\UserApplicationService;
  */
 class UserResource
 {
-    public static function add($app)
+    public static function get()
+    {
+        return new UserResource();
+    }
+    public function add($app)
     {
         $app->get(
-            '/hello/:name', function ($name) {
-            echo "Hello, $name";
+            '/hello/{name}',
+            function ($_, $_, $args) {
+                $name = $args['name'];
+                echo "Hello, $name";
             }
         );
         $app->post(
-            '/user', function () use ($app) {
-                $json = $app->request->getBody();
-                $data = json_decode($json, true);
+            '/user', function ($request, $response, $_) {
+            $data = $request->getParsedBody();
 
-                $service = new UserApplicationService();
-                $userId=$service->createUser($data["name"], $data["age"]);
+            $service = new UserApplicationService();
+            $userId = $service->createUser($data["name"], $data["age"]);
 
-                $app->response()['Content-Type'] = 'application/json';
-                $app->response()->body(
-                    '{"userId": "'.$userId.'"}'
-                );
-            }
+            $obj = new \stdClass();
+            $obj->userId = $userId;
+            return $response
+                ->withHeader('Content-Type', 'application/json')
+                ->withJson($obj);
+        }
         );
     }
 }

@@ -11,7 +11,7 @@
   ],
   "require": {
     "phpunit/phpunit": "4.0",
-    "slim/slim": "2.6.2",
+    "slim/slim": "3.0",
     "doctrine/orm": "v2.5.0",
     "robmorgan/phinx": "^0.4.4",
     "symfony/yaml": "^2.7",
@@ -20,7 +20,8 @@
     "squizlabs/php_codesniffer": "^2.3",
     "sebastian/phpcpd": "^2.0",
     "phploc/phploc": "^2.1",
-    "entomb/slim-json-api": "dev-master"
+    "entomb/slim-json-api": "dev-master",
+    "monolog/monolog": "^1.22"
   },
   "require-dev": {
     "phing/phing": "2.11.0"
